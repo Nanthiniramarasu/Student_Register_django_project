@@ -1,0 +1,35 @@
+{% load static %}
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold bg-primary" href="{% url 'Home' %}">Student Records</a>
+
+        <!-- Toggler/collapsing menu for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                {% if user.is_authenticated %}
+                <li class="nav-item d-flex align-items-center">
+                    <span class="nav-link text-white me-3 fw-bold">Hi, {{ user.username }}</span>
+                    <a class="btn btn-outline-light btn-sm" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-bold" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-bold" href="{% url 'signup' %}">Signup</a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
